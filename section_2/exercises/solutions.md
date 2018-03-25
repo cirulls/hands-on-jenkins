@@ -1,4 +1,4 @@
-## Section 1: Solutions to Exercises
+## Section 2: Solutions to Exercises
 
 ### Theory
 
