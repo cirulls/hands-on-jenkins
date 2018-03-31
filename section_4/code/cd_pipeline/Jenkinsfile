@@ -18,7 +18,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Dev") {
-            steps { runUAT('dev', 8888) }
+            steps { runUAT(8888) }
 		}
 
         stage("Deploy - Stage") {
@@ -26,7 +26,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Stage") {
-            steps { runUAT('stage', 88) }
+            steps { runUAT(88) }
 		}
 
         stage("Approve") {
@@ -38,7 +38,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Prod") {
-            steps { runUAT('prod', 80) }
+            steps { runUAT(80) }
 		}
 
 	}
@@ -90,7 +90,7 @@ def approve() {
 }
 
 
-def runUAT(environment, port) {
+def runUAT(port) {
 
 	sh "section_4/code/cd_pipeline/test/runUAT.sh ${port}"
 
