@@ -39,7 +39,7 @@ def deploy(environment) {
 	if ("${environment}" == 'test') {
 		sh 'docker ps -f name=app_test -q | xargs --no-run-if-empty docker container stop'
 sh 'docker container ls -a -fname=app_test -q | xargs -r docker container rm'
-		docker.image("hands-on-jenkins/myapp_${BUILD_NUMBER}").withRun("-p 8888:5000 --name myapp_test")
+		docker.image("hands-on-jenkins/myapp_${BUILD_NUMBER}").withRun('-p 8888:5000 --name myapp_test') { }
 	} 
 	else if ("${environment}" == 'staging') {
 
