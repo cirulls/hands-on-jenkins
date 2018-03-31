@@ -17,7 +17,7 @@ pipeline {
             steps { deploy('dev') }
 		}
 
-		stage("Test - UAT") {
+		stage("Test - UAT Dev") {
             steps { runUAT('dev') }
 		}
 
@@ -25,7 +25,7 @@ pipeline {
             steps { deploy('stage') }
 		}
 
-		stage("Test - UAT") {
+		stage("Test - UAT Stage") {
             steps { runUAT('stage') }
 		}
 
@@ -37,7 +37,7 @@ pipeline {
             steps { deploy('prod') }
 		}
 
-		stage("Test - UAT") {
+		stage("Test - UAT Prod") {
             steps { runUAT('prod') }
 		}
 
