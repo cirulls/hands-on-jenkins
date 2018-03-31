@@ -99,5 +99,7 @@ def runUAT(environment) {
 		println "Environment not valid"
 		System.exit(0)
 	}
-	sh "test/runUAT.sh ${port}"
+
+	sh "ls -lah"
+	sh "section_4/code/cd_pipeline/test/runUAT.sh ${port}"
 }
