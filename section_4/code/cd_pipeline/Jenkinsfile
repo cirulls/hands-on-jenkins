@@ -12,7 +12,7 @@ pipeline {
 
         stage("Build App") {
             agent any
-            steps { build() }
+            steps { buildApp() }
 		}
 
         stage("Deploy to Test Env") {
@@ -30,7 +30,7 @@ pipeline {
 3. Run docker image
 */
 
-def build() {
+def buildApp() {
 	dir ('section_4/code/cd_pipeline' ) {
 		def appImage = docker.build("hands-on-jenkins/myapp_${BUILD_NUMBER}")
 	}
