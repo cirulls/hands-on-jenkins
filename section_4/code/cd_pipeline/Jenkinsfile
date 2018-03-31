@@ -13,6 +13,10 @@ pipeline {
             steps { buildApp() }
 		}
 
+		stage("Test - Unit tests") {
+            steps { runUnittests() }
+		}
+
         stage("Deploy - Dev") {
             steps { deploy('dev') }
 		}
@@ -93,5 +97,12 @@ def approve() {
 def runUAT(port) {
 
 	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
+
+}
+
+
+def runUnittests() {
+
+	sh "export PYTHONPATH=${PYTHONPATH}:${pwd}/section_4/code/cd_pipeline/; python section_4/code/cd_pipeline/tests/test_flask_app.py"
 
 }
