@@ -103,6 +103,7 @@ def runUAT(port) {
 
 def runUnittests() {
 
-	sh "export PYTHONPATH=${PYTHONPATH}:${pwd}/section_4/code/cd_pipeline/; python section_4/code/cd_pipeline/tests/test_flask_app.py"
+	/* sh "export PYTHONPATH=${PYTHONPATH}:${pwd}/section_4/code/cd_pipeline/; python section_4/code/cd_pipeline/tests/test_flask_app.py" */
+	sh "python section_4/code/cd_pipeline/tests/test_flask_app.py"
 
 }
