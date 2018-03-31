@@ -92,6 +92,6 @@ def approve() {
 
 def runUAT(port) {
 
-	sh "section_4/code/cd_pipeline/test/runUAT.sh ${port}"
+	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
 
 }
