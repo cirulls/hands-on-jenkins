@@ -13,8 +13,12 @@ pipeline {
             steps { buildApp() }
 		}
 
-        stage("Deploy - Test") {
-            steps { deploy('test') }
+        stage("Deploy - Dev") {
+            steps { deploy('dev') }
+		}
+
+		stage("Test - UAT") {
+            steps { runUAT('dev') }
 		}
 
         stage("Deploy - Stage") {
@@ -25,7 +29,7 @@ pipeline {
             steps { approve() }
 		}
 
-        stage("Deploy - Production") {
+        stage("Deploy - Prod") {
             steps { deploy('prod') }
 		}
 
@@ -45,8 +49,8 @@ def deploy(environment) {
 	def containerName = ''
 	def port = ''
 
-	if ("${environment}" == 'test') {
-		containerName = "app_test"
+	if ("${environment}" == 'dev') {
+		containerName = "app_dev"
 		port = "8888"
 	} 
 	else if ("${environment}" == 'stage') {
@@ -75,4 +79,25 @@ def approve() {
 		input('Do you want to deploy to production?')
 	}
 
+}
+
+
+def runUAT(environment) {
+	
+	def port = ''
+
+	if ("${environment}" == 'dev') {
+		port = "8888"
+	} 
+	else if ("${environment}" == 'stage') {
+		port = "88"
+	}
+	else if ("${environment}" == 'prod') {
+		port = "80"
+	}
+	else {
+		println "Environment not valid"
+		System.exit(0)
+	}
+	sh "./test/runUAT.sh ${port}"
 }
