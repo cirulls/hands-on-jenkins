@@ -25,12 +25,20 @@ pipeline {
             steps { deploy('stage') }
 		}
 
+		stage("Test - UAT") {
+            steps { runUAT('stage') }
+		}
+
         stage("Approve") {
             steps { approve() }
 		}
 
         stage("Deploy - Prod") {
             steps { deploy('prod') }
+		}
+
+		stage("Test - UAT") {
+            steps { runUAT('prod') }
 		}
 
 	}
