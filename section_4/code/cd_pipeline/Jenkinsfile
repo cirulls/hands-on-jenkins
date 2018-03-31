@@ -10,20 +10,31 @@ pipeline {
 
     stages {
 
-        stage("Build App") {
+        stage("Build") {
             agent any
             steps { buildApp() }
 		}
 
-        stage("Deploy to Test") {
+        stage("Deploy - Test") {
             agent any
             steps { deploy('test') }
 		}
 
-        stage("Deploy to Stage") {
+        stage("Deploy - Stage") {
             agent any
             steps { deploy('stage') }
 		}
+
+        stage("Approve") {
+            agent any
+            steps { approve() }
+		}
+
+        stage("Deploy - Production") {
+            agent any
+            steps { deploy('prod') }
+		}
+
 	}
 }
 
@@ -60,4 +71,14 @@ def deploy(environment) {
 	sh "docker ps -f name=${containerName} -q | xargs --no-run-if-empty docker container stop"
 	sh "docker container ls -a -fname=${containerName} -q | xargs -r docker container rm"
 	sh "docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp_${BUILD_NUMBER}"
+
+}
+
+
+def approve() {
+
+	timeout(time:1, unit:'DAYS') {
+		input('Do you want to deploy to production?')
+	}
+
 }
