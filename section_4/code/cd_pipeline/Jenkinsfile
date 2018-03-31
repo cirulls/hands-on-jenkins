@@ -1,0 +1,57 @@
+#!/usr/bin/groovy
+
+pipeline {
+    agent none
+
+    options {
+        timeout(time: 1, unit: 'DAYS')
+        disableConcurrentBuilds()
+    }
+
+    stages {
+
+        stage("Build App") {
+            agent any
+            steps { build() }
+		}
+
+        stage("Deploy to Test Env") {
+            agent {
+				label "test"
+			}
+            steps { deploy('test') }
+		}
+	}
+}
+
+/*
+1. Check out code (first locally, then on GitHub)
+2. Build docker image
+3. Run docker image
+
+*/
+
+def build {
+	dir ('section_4/code/cd_pipeline' ) {
+		def appImage = docker.build("hands-on-jenkins/myapp_${BUILD_NUMBER}")
+	}
+}
+
+def deploy(environment) {
+
+	if (${environment} == 'test') {
+		sh 'docker ps -f name=app_test -q | xargs --no-run-if-empty docker container stop'
+sh 'docker container ls -a -fname=app_test -q | xargs -r docker container rm'
+		docker.image("hands-on-jenkins/myapp_${BUILD_NUMBER}").withRun("-p 8888:5000 --name myapp_test")
+	} 
+	else if (${environment == 'staging') {
+
+	}
+	else if (${environment == 'production') {
+
+	}
+	else {
+		println "Environment not valid"
+		System.exit(0)
+	}
+}
