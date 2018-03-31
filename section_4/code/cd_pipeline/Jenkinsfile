@@ -16,9 +16,7 @@ pipeline {
 		}
 
         stage("Deploy to Test Env") {
-            agent {
-				label "test"
-			}
+            agent any
             steps { deploy('test') }
 		}
 	}
