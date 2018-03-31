@@ -18,7 +18,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Dev") {
-            steps { runUAT('dev') }
+            steps { runUAT('dev', 8888) }
 		}
 
         stage("Deploy - Stage") {
@@ -26,7 +26,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Stage") {
-            steps { runUAT('stage') }
+            steps { runUAT('stage', 88) }
 		}
 
         stage("Approve") {
@@ -38,7 +38,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Prod") {
-            steps { runUAT('prod') }
+            steps { runUAT('prod', 80) }
 		}
 
 	}
@@ -90,24 +90,8 @@ def approve() {
 }
 
 
-def runUAT(environment) {
-	
-	def port = ''
+def runUAT(environment, port) {
 
-	if ("${environment}" == 'dev') {
-		port = "8888"
-	} 
-	else if ("${environment}" == 'stage') {
-		port = "88"
-	}
-	else if ("${environment}" == 'prod') {
-		port = "80"
-	}
-	else {
-		println "Environment not valid"
-		System.exit(0)
-	}
-
-	sh "ls -lah"
 	sh "section_4/code/cd_pipeline/test/runUAT.sh ${port}"
+
 }
