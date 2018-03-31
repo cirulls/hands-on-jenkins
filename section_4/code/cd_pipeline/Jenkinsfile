@@ -37,6 +37,9 @@ def buildApp() {
 
 def deploy(environment) {
 
+	def containerName = ''
+	def port = ''
+
 	if ("${environment}" == 'test') {
 		containerName = "app_test"
 		port = "8888"
