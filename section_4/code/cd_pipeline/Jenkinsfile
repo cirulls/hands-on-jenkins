@@ -14,6 +14,11 @@ pipeline {
 		}
 
 		stage("Test - Unit tests") {
+
+			environment {
+				PYTHONPATH = "${WORKSPACE}"
+			}
+
             steps { runUnittests() }
 		}
 
