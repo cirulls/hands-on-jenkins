@@ -18,8 +18,10 @@ pipeline {
 		}
 
 		stage("Test - Unit tests") {
-			echo "PYTHONPATH is ${PYTHONPATH}"
-			steps { runUnittests() }
+			steps { 
+					echo "PYTHONPATH is ${PYTHONPATH}"
+					runUnittests() 
+			}
 		}
 
 		stage("Deploy - Dev") {
