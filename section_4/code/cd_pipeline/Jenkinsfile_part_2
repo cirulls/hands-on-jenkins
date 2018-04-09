@@ -13,15 +13,16 @@ pipeline {
 
 	stages {
 
-		stage("Build") {
-			steps { buildApp() }
-		}
-
 		stage("Test - Unit tests") {
 			steps { 
+					echo "ls -lah ${WORKSPACE}"
 					echo "PYTHONPATH is ${PYTHONPATH}"
 					runUnittests() 
 			}
+		}
+
+		stage("Build") {
+			steps { buildApp() }
 		}
 
 		stage("Deploy - Dev") {
