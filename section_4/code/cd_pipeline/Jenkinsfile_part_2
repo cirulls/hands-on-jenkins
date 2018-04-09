@@ -1,41 +1,41 @@
 #!/usr/bin/groovy
 
 pipeline {
-    agent any
+	agent any
 
-    options {
-        disableConcurrentBuilds()
-    }
+	options {
+		disableConcurrentBuilds()
+	}
 
-    stages {
+	environment {
+		PYTHONPATH = "${WORKSPACE}:${pwd}/section_4/code/cd_pipeline/"
+	}
 
-        stage("Build") {
-            steps { buildApp() }
+	stages {
+
+		stage("Build") {
+			steps { buildApp() }
 		}
 
 		stage("Test - Unit tests") {
-
-			environment {
-				PYTHONPATH = "${WORKSPACE}"
-			}
-
-            steps { runUnittests() }
+			echo "PYTHONPATH is ${PYTHONPATH}"
+			steps { runUnittests() }
 		}
 
-        stage("Deploy - Dev") {
-            steps { deploy('dev') }
+		stage("Deploy - Dev") {
+			steps { deploy('dev') }
 		}
 
 		stage("Test - UAT Dev") {
-            steps { runUAT(8888) }
+			steps { runUAT(8888) }
 		}
 
-        stage("Deploy - Stage") {
-            steps { deploy('stage') }
+		stage("Deploy - Stage") {
+			steps { deploy('stage') }
 		}
 
 		stage("Test - UAT Stage") {
-            steps { runUAT(88) }
+			steps { runUAT(88) }
 		}
 
 	}
@@ -84,7 +84,7 @@ def runUAT(port) {
 def runUnittests() {
 
 	/* sh "export PYTHONPATH=${PYTHONPATH}:${pwd}/section_4/code/cd_pipeline/; python section_4/code/cd_pipeline/tests/test_flask_app.py" */
-	//sh "python section_4/code/cd_pipeline/tests/test_flask_app.py"
-	sh "sleep 2"
+	sh "python section_4/code/cd_pipeline/tests/test_flask_app.py"
+	//sh "sleep 2"
 
 }
