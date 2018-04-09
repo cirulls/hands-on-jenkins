@@ -15,7 +15,7 @@ pipeline {
 
 		stage("Test - Unit tests") {
 			steps { 
-					sh "ls -lah ${WORKSPACE}/section_4/code/cd_pipelin/section_4/code/cd_pipelinee"
+					sh "ls -lah ${WORKSPACE}/section_4/code/cd_pipelin/section_4/code/cd_pipeline"
 					echo "PYTHONPATH is ${PYTHONPATH}"
 					runUnittests() 
 			}
