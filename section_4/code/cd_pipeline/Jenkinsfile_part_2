@@ -14,11 +14,7 @@ pipeline {
 	stages {
 
 		stage("Test - Unit tests") {
-			steps { 
-					sh "ls -lah ${WORKSPACE}"
-					echo "PYTHONPATH is ${PYTHONPATH}"
-					runUnittests() 
-			}
+			steps { runUnittests() }
 		}
 
 		stage("Build") {
@@ -78,16 +74,10 @@ def deploy(environment) {
 
 
 def runUAT(port) {
-
 	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
-
 }
 
 
 def runUnittests() {
-
-	/* sh "export PYTHONPATH=${PYTHONPATH}:${pwd}/section_4/code/cd_pipeline/; python section_4/code/cd_pipeline/tests/test_flask_app.py" */
 	sh "python section_4/code/cd_pipeline/tests/test_flask_app.py"
-	//sh "sleep 2"
-
 }
