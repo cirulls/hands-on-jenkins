@@ -73,11 +73,11 @@ def deploy(environment) {
 }
 
 
-def runUAT(port) {
-	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
+def runUnittests() {
+	sh "python section_4/code/cd_pipeline/tests/test_flask_app.py"
 }
 
 
-def runUnittests() {
-	sh "python section_4/code/cd_pipeline/tests/test_flask_app.py"
+def runUAT(port) {
+	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
 }
