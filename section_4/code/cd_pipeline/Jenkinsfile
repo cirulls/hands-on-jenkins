@@ -7,19 +7,18 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+	environment {
+		PYTHONPATH = "${WORKSPACE}/section_4/code/cd_pipeline"
+	}
+
     stages {
+
+		stage("Test - Unit tests") {
+			steps { runUnittests() }
+		}
 
         stage("Build") {
             steps { buildApp() }
-		}
-
-		stage("Test - Unit tests") {
-
-			environment {
-				PYTHONPATH = "${WORKSPACE}"
-			}
-
-            steps { runUnittests() }
 		}
 
         stage("Deploy - Dev") {
@@ -61,6 +60,7 @@ def buildApp() {
 	}
 }
 
+
 def deploy(environment) {
 
 	def containerName = ''
@@ -83,8 +83,8 @@ def deploy(environment) {
 		System.exit(0)
 	}
 
-	sh "docker ps -f name=${containerName} -q | xargs --no-run-if-empty docker container stop"
-	sh "docker container ls -a -fname=${containerName} -q | xargs -r docker container rm"
+	sh "docker ps -f name=${containerName} -q | xargs --no-run-if-empty docker stop"
+	sh "docker ps -a -f name=${containerName} -q | xargs -r docker rm"
 	sh "docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"
 
 }
@@ -99,17 +99,11 @@ def approve() {
 }
 
 
-def runUAT(port) {
-
-	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
-
+def runUnittests() {
+	sh "python section_4/code/cd_pipeline/tests/test_flask_app.py"
 }
 
 
-def runUnittests() {
-
-	/* sh "export PYTHONPATH=${PYTHONPATH}:${pwd}/section_4/code/cd_pipeline/; python section_4/code/cd_pipeline/tests/test_flask_app.py" */
-	//sh "python section_4/code/cd_pipeline/tests/test_flask_app.py"
-	sh "sleep 2"
-
+def runUAT(port) {
+	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
 }
