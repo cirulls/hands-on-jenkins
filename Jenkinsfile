@@ -8,19 +8,19 @@ pipeline {
     }
     stage('Test') {
       parallel {
-        stage('Test') {
+        stage('Firefox') {
           steps {
-            sh 'echo "Test"'
+            sh 'echo "Test on Firefox"'
           }
         }
-        stage('UAT') {
+        stage('Chrome') {
           steps {
-            sh 'echo "Run UAT"'
+            sh 'echo "Test on Chrome"'
           }
         }
-        stage('') {
+        stage('Edge') {
           steps {
-            sleep 5
+			sh 'exit 1'
           }
         }
       }
