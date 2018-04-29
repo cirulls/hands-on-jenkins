@@ -21,7 +21,7 @@ pipeline {
         stage('Edge') {
           steps {
             sleep 5
-			exit 1
+			sh 'exit 1'
           }
         }
       }
