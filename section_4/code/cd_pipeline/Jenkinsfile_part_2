@@ -8,7 +8,7 @@ pipeline {
 	}
 
 	environment {
-		PYTHONPATH = "${WORKSPACE}/section_4/code/cd_pipeline"
+		PYTHONPATH = "${WORKSPACE}/section_4/code/cd_pipeline":"/home/jasonp/.local/lib/python3.6/site-packages/flask"
 	}
 
 	stages {
