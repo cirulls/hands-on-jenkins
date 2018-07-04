@@ -6,5 +6,10 @@ pipeline {
         echo 'QA Environment'
       }
     }
+    stage('prod') {
+      steps {
+        echo 'prod'
+      }
+    }
   }
 }
