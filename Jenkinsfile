@@ -6,7 +6,7 @@ pipeline {
         echo 'Building'
       }
     }
-    stage('Firefox testing') {
+    stage('Test') {
       parallel {
         stage('Firefox testing') {
           steps {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Chrome testing') {
           steps {
-            sh 'echo \'test on chrome\''
+            sh 'echo \'test on chrome\'; exit 1'
           }
         }
       }
