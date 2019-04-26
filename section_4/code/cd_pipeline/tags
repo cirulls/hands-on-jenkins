@@ -1,0 +1,5 @@
+BasicTests	tests/test_flask_app.py	/^class BasicTests(unittest.TestCase):$/
+index	app.py	/^def index():$/
+setUp	tests/test_flask_app.py	/^    def setUp(self):$/
+tearDown	tests/test_flask_app.py	/^    def tearDown(self):$/
+test_main_page	tests/test_flask_app.py	/^    def test_main_page(self):$/
