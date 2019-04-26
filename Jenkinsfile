@@ -6,7 +6,7 @@ pipeline {
         echo 'Building...'
       }
     }
-    stage('Testing ...') {
+    stage('Test') {
       parallel {
         stage('Test Firefox') {
           steps {
