@@ -44,17 +44,17 @@ pipeline {
         //     }
         // }
 
-        stage("Approve") {
-            steps { approve() }
-        }
+        // stage("Approve") {
+        //     steps { approve() }
+        // }
 
-        stage("Deploy - Live") {
-            steps { deploy('live') }
-        }
+        // stage("Deploy - Live") {
+        //     steps { deploy('live') }
+        // }
 
-        stage("Test - UAT Live") {
-            steps { runUAT(80) }
-        }
+        // stage("Test - UAT Live") {
+        //     steps { runUAT(80) }
+        // }
 
     }
 }
@@ -64,13 +64,11 @@ pipeline {
 def buildApp() {
     dir ('section_4/code/cd_pipeline' ) {
         def appImage = docker.build("${IMAGE}")
+        appImage.push()
     }
 }
 
 
-def pushToRegistry() {
-
-}
 
 def deploy(environment) {
 
