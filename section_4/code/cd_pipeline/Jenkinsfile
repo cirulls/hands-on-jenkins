@@ -9,7 +9,7 @@ pipeline {
 
     environment {
         PYTHONPATH = "${WORKSPACE}/section_4/code/cd_pipeline"
-        IMAGE = "localhost:5000/cats/app:${BUILD_NUMBER}"
+        IMAGE = "app:${BUILD_NUMBER}"
     }
 
     stages {
@@ -63,8 +63,10 @@ pipeline {
 // steps
 def buildApp() {
     dir ('section_4/code/cd_pipeline' ) {
-        def appImage = docker.build("${IMAGE}")
-        appImage.push()
+        docker.withRegistry("http://localhost:5000") {
+            def appImage = docker.build("${IMAGE}")
+            appImage.push()
+        }
     }
 }
 
