@@ -15,12 +15,12 @@ pipeline {
         }
         stage('Test Chrome') {
           steps {
-            sh 'echo \'Testing Chrome\'; exit 1'
+            sh 'echo \'Testing Chrome\''
           }
         }
         stage('Test Edge') {
           steps {
-            sh 'echo \'Testing Edge\''
+            sh 'echo \'Testing Edge\'; exit 1'
           }
         }
       }
