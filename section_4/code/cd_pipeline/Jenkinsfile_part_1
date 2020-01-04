@@ -8,10 +8,11 @@ pipeline {
     }
 
     stages {
+        //这一步是为了让Jenkins找到Mac OS主机上的docker命令
         stage('init') {
            steps {
             script{
-              def dockerPath = tool 'docker' //全局配置里的docker
+              def dockerPath = tool 'docker' //需要在global Tool里配置bin/docker的路径，默认/usr/local/bin/docker
               env.PATH = "${dockerPath}/bin:${env.PATH}" //添加了系统环境变量上
             }
            }
@@ -50,6 +51,7 @@ def deploy(environment) {
 		System.exit(0)
 	}
 
+    // below two sh command doesn't work for MacOS
 	//sh "docker ps -f name=${containerName} -q | xargs --no-run-if-empty docker stop"
 	//sh "docker ps -a -f name=${containerName} -q | xargs -r docker rm"
 	sh "docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"
