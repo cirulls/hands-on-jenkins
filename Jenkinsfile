@@ -7,23 +7,17 @@ pipeline {
       }
     }
 
-    stage('Test FFX') {
+    stage('123') {
       parallel {
-        stage('Test FFX') {
+        stage('123') {
           steps {
-            sh 'echo \'Testing Firefox\''
+            echo '123'
           }
         }
 
-        stage('Test Chrome') {
+        stage('234') {
           steps {
-            sh 'echo \'test chrome\''
-          }
-        }
-
-        stage('Test Edge') {
-          steps {
-            sh 'echo \'test Edge\''
+            echo '234'
           }
         }
 
