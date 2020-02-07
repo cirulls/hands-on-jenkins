@@ -7,11 +7,11 @@ pipeline {
       }
     }
 
-    stage('123') {
+    stage('123Test') {
       parallel {
         stage('123') {
           steps {
-            echo '123'
+            'echo '123'; exit 1'
           }
         }
 
