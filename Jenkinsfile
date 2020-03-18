@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-    stage('Test Firefox') {
+    stage('Test') {
       parallel {
         stage('Test Firefox') {
           steps {
