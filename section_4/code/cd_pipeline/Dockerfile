@@ -1,6 +1,10 @@
 # base image
 FROM alpine:3.7
 
+RUN echo "https://alpine.global.ssl.fastly.net/alpine/v3.7/main" > /etc/apk/repositories
+RUN echo "https://alpine.global.ssl.fastly.net/alpine/v3.7/community" >> /etc/apk/repositories
+RUN apk update
+
 # Install python 3 and pip
 RUN apk add --update python3
 
