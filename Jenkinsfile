@@ -11,7 +11,7 @@ pipeline {
       parallel {
         stage('Test Firefox') {
           steps {
-            sh 'echo \'Testing Firefox\'; exit 1'
+            sh 'echo \'Testing Firefox\''
           }
         }
 
