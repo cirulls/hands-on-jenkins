@@ -27,8 +27,7 @@ def buildApp() {
 	//dir ('section_4/code/cd_pipeline' ) {
 		echo "exist"
 		// def appImage = docker.build("hands-on-jenkins/myapp:${BUILD_NUMBER}")
-		def appImage = docker.build("hands-on-jenkins/myapp")
-		appImage.push()
+		sh "sudo docker build -t hands-on-jenkins/myapp:${BUILD_NUMBER} .  "
 	//}
 	echo "end"
 }
