@@ -100,8 +100,9 @@ def approve() {
 
 
 def runUnittests() {
-	sh "pip3 install --no-cache-dir -r ./section_4/code/cd_pipeline/requirements.txt"
-	sh "python3 section_4/code/cd_pipeline/tests/test_flask_app.py"
+	sh "echo 'Skipping unit tests.'"
+	//sh "pip3 install --no-cache-dir -r ./section_4/code/cd_pipeline/requirements.txt"
+	//sh "python3 section_4/code/cd_pipeline/tests/test_flask_app.py"
 }
 
 
