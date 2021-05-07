@@ -41,12 +41,12 @@ pipeline {
             steps { approve() }
 		}
 
-        stage("Deploy - Live") {
-            steps { deploy('live') }
+        stage("Deploy - Production") {
+            steps { deploy('production') }
 		}
 
-		stage("Test - UAT Live") {
-            steps { runUAT(80) }
+		stage("Test - UAT Production") {
+            steps { runUAT(81) }
 		}
 
 	}
@@ -74,9 +74,9 @@ def deploy(environment) {
 		containerName = "app_stage"
 		port = "88"
 	}
-	else if ("${environment}" == 'live') {
-		containerName = "app_live"
-		port = "80"
+	else if ("${environment}" == 'production') {
+		containerName = "app_production"
+		port = "81"
 	}
 	else {
 		println "Environment not valid"
@@ -93,7 +93,7 @@ def deploy(environment) {
 def approve() {
 
 	timeout(time:1, unit:'DAYS') {
-		input('Do you want to deploy to live?')
+		input('Do you want to deploy to production?')
 	}
 
 }
