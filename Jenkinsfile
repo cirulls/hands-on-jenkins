@@ -24,6 +24,7 @@ pipeline {
         stage('Test Edge') {
           steps {
             sh 'echo \'Test Edge\''
+            sh 'exit 1'
           }
         }
 
