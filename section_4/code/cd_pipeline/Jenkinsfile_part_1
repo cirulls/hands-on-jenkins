@@ -35,7 +35,7 @@ def deploy(environment) {
 
 	if ("${environment}" == 'dev') {
 		containerName = "app_dev"
-		port = "8080"
+		port = "9000"
 	} 
 	else {
 		println "Environment not valid"
