@@ -26,7 +26,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Dev") {
-			steps { runUAT(8888) }
+			steps { runUAT(9000) }
 		}
 
 		stage("Deploy - Stage") {
@@ -34,7 +34,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Stage") {
-			steps { runUAT(88) }
+			steps { runUAT(3000) }
 		}
 	}
 }
@@ -54,11 +54,11 @@ def deploy(environment) {
 
 	if ("${environment}" == 'dev') {
 		containerName = "app_dev"
-		port = "8888"
+		port = "9000"
 	} 
 	else if ("${environment}" == 'stage') {
 		containerName = "app_stage"
-		port = "88"
+		port = "3000"
 	}
 	else {
 		println "Environment not valid"
@@ -72,7 +72,7 @@ def deploy(environment) {
 
 
 def runUnittests() {
-	sh "pip3 install --no-cache-dir -r ./section_4/code/cd_pipeline/requirements.txt"
+	sh "sudo pip3 install --no-cache-dir -r ./section_4/code/cd_pipeline/requirements.txt"
 	sh "python3 section_4/code/cd_pipeline/tests/test_flask_app.py"
 }
 

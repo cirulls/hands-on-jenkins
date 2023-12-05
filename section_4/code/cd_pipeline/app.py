@@ -5,18 +5,36 @@ app = Flask(__name__)
 
 # list of cat images
 images = [
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-26383-1381845104-25.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-26358-1381845043-13.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-25329-1381845415-0.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-23859-1381845509-0.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-19708-1381845008-7.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-19667-1381844937-10.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-3409-1381844582-13.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-3391-1381844336-26.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-1376-1381846217-0.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-26390-1381844163-18.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-26388-1381844103-11.gif",
-    "http://www.catshaming.co.uk/wp-content/uploads/2014/11/anigif_enhanced-buzz-27162-1381845360-0.gif"
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-9.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-27.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-13.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-28.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-21.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-27.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-4.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-16.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-20.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-30.gif"
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-22.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-5.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-26.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-1.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-19.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-7.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-17.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-11.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-2.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-3.gif"
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-9.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-8.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-10.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-12.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-14.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-18.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-23.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-24.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-25.gif",
+    "https://acegif.com/wp-content/uploads/gifs/happy-cat-29.gif"
 ]
 
 @app.route('/')
