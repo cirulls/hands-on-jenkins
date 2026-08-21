@@ -3,32 +3,38 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Building...'
+        echo 'Building.....'
       }
     }
-    stage('Test Firefox') {
+
+    stage('Test') {
       parallel {
-        stage('Test Firefox') {
+        stage('Testing Firefox') {
           steps {
             sh 'echo \'Testing Firefox\''
           }
         }
-        stage('Test Chrome') {
+
+        stage('Testing Chrome') {
           steps {
-            sh 'echo \'Testing Chrome\''
+            sh 'echo \'Tesing Chrome\'; exit 1'
           }
         }
-        stage('Test Edge') {
+
+        stage('Testing Edge') {
           steps {
             sh 'echo \'Testing Edge\''
           }
         }
+
       }
     }
+
     stage('Deploy') {
       steps {
         echo 'Deploy'
       }
     }
+
   }
 }
